@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+ {% load static %}
+
+{% block content %}
+
+ <!-- about section -->
+
+ <section class="about_section layout_padding long_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src=" {% static 'assets/images/gumruk.png'%}" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                Hakkımızda
+              </h2>
+            </div>
+            <p>
+                Mevzuatım, gümrük konularında ihtiyaç duyulan tüm mevzuat bilgilerini günlük olarak takip eden ve kullanıcıların erişimine sunan yenilikçi bir platformdur. Bu uygulama, gümrük mevzuatı konusunda güncel ve doğru bilgilere erişmeyi kolaylaştırmayı amaçlar. Gümrük müşavirleri ve bu bilgilere ihtiyaç duyan herkes için oluşturulan Mevzuatım, resmi belgeleri (Word, Excel ve PDF formatlarında) güncel tutar ve kullanıcılarına sunar. Bilgi güçtür ve paylaşıldıkça çoğalır ilkesine dayanarak, Mevzuatım, meslektaşlar ve ilgilenen herkesle bu değerli bilgileri paylaşmayı hedefler. Mevzuatım, gümrük mevzuatına dair en güncel ve doğru bilgilere kolayca ulaşmanızı sağlayan yenilikçi bir platformdur. Bu platform sayesinde, mevzuat bilgilerini güncel tutmak ve ihtiyaç duyduğunuz bilgilere hızlı bir şekilde erişmek artık çok daha kolay.
+            </p>
+            <a href="">
+              İletişime geç
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+{%endblock%}

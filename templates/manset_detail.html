@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="about_section layout_padding">
+   <div class="container">
+       <div class="row">
+           <div class="col-md-12">
+               <div class="about_img">
+                   <img src="{{ manset.resim.url }}" alt="Haber Resmi">
+               </div>
+           </div>
+           
+           <div class="col-md-12">
+               <div class="about_taital_main">
+                   <div class="about_taital">
+                       <h2>{{ manset.ustyazi }}</h2>
+                   </div>
+                   <p class="about_text">{{ manset.yazi }}</p>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+
+<div class="comments_section">
+   <div class="container">
+       <h3>Kullanıcı Yorumları</h3>
+
+       {% if not manset.comments.all %}
+           Henüz yorum yapılmadı. <a href="#"> Yorum ekle... </a>
+       {% else %}
+           {% for comment in manset.comments.all %}
+               <div class="comment">
+                   <div class="comment_text">
+                       <p><strong>{{ comment.name }} - ({{ comment.date_added }}) </strong> : {{ comment.body }}</p>
+                   </div>
+               </div>
+           {% endfor %}
+       {% endif %}
+   </div>
+</div>
+
+<div class="comment_form_section">
+   <div class="container">
+       <h3>Yorum Yap</h3>
+       <form action="{% url 'redirect_manset_detail' manset.id %}" method="post">
+           {% csrf_token %}
+           <div class="form_group">
+               <label for="name">İsim:</label>
+               {{ form.name }}
+           </div>
+           <div class="form_group">
+               <label for="comment">Yorum:</label>
+               {{ form.body }}
+           </div>
+           <div class="form_group">
+               <button type="submit">Gönder</button>
+           </div>
+       </form>
+   </div>
+</div>
+
+<style> 
+   .layout_padding {
+      padding: 20px;
+  }
+
+  .container {
+      max-width: 1200px;
+      margin: 0 auto;
+  }
+
+  .row {
+      display: flex;
+      flex-wrap: wrap;
+  }
+
+  .col-md-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+      box-sizing: border-box;
+      padding: 10px;
+  }
+
+  .about_img img {
+      max-width: 100%;
+      max-height: 400px;
+      display: block;
+      margin: 0 auto;
+  }
+
+  .about_taital_main {
+      text-align: left;
+      padding: 10px;
+  }
+
+  .about_taital h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+  }
+
+  .about_text {
+      font-size: 1rem;
+      line-height: 1.6;
+  }
+
+  .comments_section {
+      padding: 20px;
+      background-color: #f9f9f9;
+  }
+
+  .comments_section .container {
+      max-width: 800px;
+  }
+
+  .comments_section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+  }
+
+  .comment {
+      margin-bottom: 15px;
+  }
+
+  .comment p {
+      margin: 0;
+  }
+
+  .comment_form_section {
+      padding: 20px;
+      background-color: #fff;
+  }
+
+  .comment_form_section .container {
+      max-width: 800px;
+  }
+
+  .comment_form_section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+  }
+
+  .form_group {
+      margin-bottom: 15px;
+  }
+
+  .form_group label {
+      display: block;
+      margin-bottom: 5px;
+  }
+
+  .form_group input,
+  .form_group textarea {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+  }
+
+  .form_group button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+  }
+
+  .form_group button:hover {
+      background-color: #0056b3;
+  }
+
+   .layout_padding {
+      padding: 20px;
+  }
+
+  .container {
+      max-width: 1200px;
+      margin: 0 auto;
+  }
+
+  .row {
+      display: flex;
+      flex-wrap: wrap;
+  }
+
+  .col-md-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+      box-sizing: border-box;
+      padding: 10px;
+  }
+
+  .about_img img {
+      max-width: 100%;
+      max-height: 400px;
+      display: block;
+      margin: 0 auto;
+  }
+
+  .about_taital_main {
+      text-align: left;
+      padding: 10px;
+  }
+
+  .about_taital h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+  }
+
+  .about_text {
+      font-size: 1rem;
+      line-height: 1.6;
+  }
+</style>
+
+{% endblock %}

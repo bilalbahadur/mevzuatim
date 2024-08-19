@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+ {% load static %}
+
+{% block content %}
+
+
+
+
+
+
+
+
+  <!-- blog section -->
+
+  <section class="blog_section layout_padding">
+    <div class="container">
+        <div class="heading_container">
+            <h2>Son Bloglar</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mx-auto">
+                <div class="row d-flex flex-wrap">
+                    {% for items in samples %}
+                    <div class="col-md-4 col-lg-6">
+                        <div class="box">
+                            <div class="img-box">
+                                <img src="{{items.image.url}}" alt="" style="max-height: 200px; max-width: 200px;">
+                            </div>
+                            <div class="detail-box">
+                                <h5>{{items.baslik}}</h5>
+                                <p class="truncate">{{items.blog}}</p>
+                                <a href="">Devamını oku</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <style> 
+      .truncate {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:12;
+    overflow: hidden;
+}
+
+.blog_section .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.blog_section .box {
+    margin: 10px;
+    flex: 1 0 21%; /* Her kutunun genişliğini belirler. Bu, 4 kutunun bir sıraya sığmasını sağlar */
+}
+
+@media (max-width: 768px) {
+    .blog_section .box {
+        flex: 1 0 46%; /* Daha küçük ekranlarda her satıra 2 kutu sığdırır */
+    }
+}
+
+@media (max-width: 576px) {
+    .blog_section .box {
+        flex: 1 0 100%; /* En küçük ekranlarda her satıra 1 kutu sığdırır */
+    }
+}
+</style>
+</section>
+
+
+  <!-- end blog section -->
+
+
+
+
+
+
+
+{% endblock %}

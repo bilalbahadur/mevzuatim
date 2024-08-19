@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+ {% load static %}
+
+{% block content %}
+
+
+
+
+
+<section class="contact_section  long_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <div class="heading_container">
+              <h2>
+                Bizimle İletişime Geçin
+              </h2>
+            </div>
+            <form action="">
+              <div>
+                <input type="text" placeholder="İsim Soyisim" />
+              </div>
+              <div>
+                <input type="text" placeholder="Telefon Numarası" />
+              </div>
+              <div>
+                <input type="email" placeholder="E-mail" />
+              </div>
+              <div>
+                <input type="text" class="message-box" placeholder="Mesajın" />
+              </div>
+              <div class="btn_box">
+                <button>
+                  Gönder
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="map_container">
+            <div class="map">
+              <div id="googleMap"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function myMap() {
+      var mapProp= {
+        center:new google.maps.LatLng(41.0082,28.9784),
+        zoom:10,
+      };
+      var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+    }
+  </script>
+
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+
+{% endblock %}

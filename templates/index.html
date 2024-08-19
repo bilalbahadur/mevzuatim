@@ -1,0 +1,348 @@
+{% extends 'base.html' %}
+ {% load static %}
+
+{% block content %}
+
+
+
+ <!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->    
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <link rel="icon" type="image/png" href="{% static 'assets\images\favicon.png'%}">
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Mevzuatım</title>
+
+
+  <link rel="stylesheet" type="text/css" href=" {% static 'assets/css/bootstrap.css'%}" />
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet" />
+
+  <link href="{% static 'assets/css/font-awesome.min.css' %}" rel="stylesheet" />
+
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+
+  <link href=" {% static 'assets/css/responsive.css'%}" rel="stylesheet" />
+
+
+</head>
+
+<body>
+
+  
+   
+
+  
+
+  <!-- slider section -->
+  <div class="hero_area">
+    <style> 
+      .carousel-item img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .carousel-inner .container {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .detail-box {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.7); /* Adjust opacity as needed */
+      padding: 20px;
+    }
+    
+   
+    </style>
+<section class="slider_section long_section" style="background-image: url('{%static 'assets/images/indexbg.jpg'%}'); background-size: cover; background-position: center center;">
+  <div id="customCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-5">
+              <div class="detail-box">
+                <h1>
+                  Bütün Mevzuat <br>
+                  İhtiyaçlarınız için
+                </h1>
+                <p>
+                    Bilgi güçtür ve paylaşıldıkça çoğalır ilkesine dayanarak, Mevzuatım, meslektaşlar ve ilgilenen herkesle bu değerli bilgileri paylaşmayı hedefler.
+                </p>
+                <div class="btn-box">
+                  <a href="{%url 'hakkimizda'%}" class="btn1">
+                   Hakkımızda
+                  </a>
+                  <a href="{%url 'iletisim'%}" class="btn2">
+                    İletişime geç
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7">
+              <!-- Resim artık burada gerekmiyor, çünkü arka plan olarak kullanılıyor -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- slider section -->
+
+ 
+
+  <!-- furniture section -->
+
+  <section class="blog_section layout_padding">
+      <div class="container">
+          <div class="heading_container">
+              <h2>
+                HABERLER
+              </h2>
+          </div>
+
+
+         
+          <div class="col-md-6 col-lg-12 mx-auto">
+          
+            {% for item in Mansets %}  
+              <div class="box">
+                <div class="img-box">
+                  <img src="{{item.resim.url}}" alt="" class="small-image">
+
+                  <style> 
+                    .mansetler {
+                    display: flex;
+                    flex-direction: column;
+                }
+                
+                .box {
+                    display: flex;
+                    align-items: flex-start;
+                    margin-bottom: 20px;
+                }
+                
+                .img-box {
+                    flex: 0 0 auto;
+                    margin-right: 15px;
+                }
+                
+                .small-image {
+                    max-height: 189px;
+                    width: 300px;
+                    object-fit: cover;
+                }
+                
+                .detail-box {
+                    flex: 1;
+                }
+                
+            
+                
+                
+              </style>
+
+              </div>
+                  <div class="detail-box">
+                      <h5>
+                          {{item.ustyazi}}
+                      </h5>
+                      
+                      <p style=" display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;">
+                      {{item.yazi}}
+                      </p>
+                      <a href="{% url 'manset_detail' item.id %}">
+                          Devamını oku...
+                      </a>
+                  </div>
+      
+              </div>
+              {% endfor %}
+          </div>
+
+
+        
+
+
+
+      </div>
+      </div>
+  </section>
+
+  <!-- end furniture section -->
+
+
+  <!-- about section -->
+
+  <section class="about_section layout_padding long_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src=" {% static 'assets/images/gumruk.png'%}" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                Hakkımızda
+              </h2>
+            </div>
+            <p>
+                Mevzuatım, gümrük konularında ihtiyaç duyulan tüm mevzuat bilgilerini günlük olarak takip eden ve kullanıcıların erişimine sunan yenilikçi bir platformdur. Bu uygulama, gümrük mevzuatı konusunda güncel ve doğru bilgilere erişmeyi kolaylaştırmayı amaçlar. Gümrük müşavirleri ve bu bilgilere ihtiyaç duyan herkes için oluşturulan Mevzuatım, resmi belgeleri (Word, Excel ve PDF formatlarında) güncel tutar ve kullanıcılarına sunar.
+                Bilgi güçtür ve paylaşıldıkça çoğalır ilkesine dayanarak, Mevzuatım, meslektaşlar ve ilgilenen herkesle bu değerli bilgileri paylaşmayı hedefler.
+                Mevzuatım, gümrük mevzuatına dair en güncel ve doğru bilgilere kolayca ulaşmanızı sağlayan yenilikçi bir platformdur. Bu platform sayesinde, mevzuat bilgilerini güncel tutmak ve ihtiyaç duyduğunuz bilgilere hızlı bir şekilde erişmek artık çok daha kolay.
+            </p>
+            <a href="{% url 'hakkimizda'%}">
+              Devamını oku...
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+  <!-- blog section -->
+
+  <section class="blog_section layout_padding">
+    <div class="container">
+        <div class="heading_container">
+            <h2>Son Bloglar</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mx-auto">
+                <div class="row d-flex flex-wrap">
+                    {% for items in samples %}
+                    <div class="col-md-4 col-lg-6">
+                        <div class="box">
+                            <div class="img-box">
+                                <img src="{{items.image.url}}" alt="" style="max-height: 200px; max-width: 200px;">
+                            </div>
+                            <div class="detail-box">
+                                <h5>{{items.baslik}}</h5>
+                                <p class="truncate">{{items.blog}}</p>
+                                <a href="">Devamını oku</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <style> 
+      .truncate {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:12;
+    overflow: hidden;
+}
+
+.blog_section .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.blog_section .box {
+    margin: 10px;
+    flex: 1 0 21%; /* Her kutunun genişliğini belirler. Bu, 4 kutunun bir sıraya sığmasını sağlar */
+}
+
+@media (max-width: 768px) {
+    .blog_section .box {
+        flex: 1 0 46%; /* Daha küçük ekranlarda her satıra 2 kutu sığdırır */
+    }
+}
+
+@media (max-width: 576px) {
+    .blog_section .box {
+        flex: 1 0 100%; /* En küçük ekranlarda her satıra 1 kutu sığdırır */
+    }
+}
+</style>
+</section>
+
+
+  <!-- end blog section -->
+
+
+
+
+  <!-- contact section -->
+  <section class="contact_section  long_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <div class="heading_container">
+              <h2>
+                İletişim Bilgilerimiz
+              </h2>
+            </div>
+            <form action="{% url 'iletisim'%}">
+                <h4>Email:  <p> dalyan.ismail@gmail.com</p> </h4>
+                <h4>Telefon Numaramız: <p>0505 359 17 25</p> </h4>
+                <h4>Adres: <p>Yeni Mah. Oba Sok. No: 32 Daire: 3 Bağcılar/İSTANBUL</p> </h4>
+                <div class="btn_box"> 
+                  <a>
+                    <button>
+                        İLETİŞİME GEÇİN
+                    </button>
+                  </a>
+                </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="map_container">
+            <div class="map">
+              <div id="googleMap"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end contact section -->
+
+
+
+
+  <!-- jQery -->
+  <script src="{% static 'assets/js/jquery-3.4.1.min.js'%}"></script>
+  <!-- bootstrap js -->
+  <script src="{% static 'assets/js/bootstrap.js'%}"></script>
+  <!-- custom js -->
+  <script src=" {% static 'assets/js/custom.js'%}"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+  <!-- End Google Map -->
+
+</body>
+
+</html>
+
+{% endblock %}
